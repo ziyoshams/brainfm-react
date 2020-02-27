@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import "./App.css";
+import Modal from "./components/Modal";
 import Board from "./components/Board";
+
 import { loadData } from "./redux/actions";
 import { setModalVisibility } from "./redux/actions";
-import Modal from "./components/Modal";
+import "./App.css";
 
 class App extends Component {
   componentDidMount() {

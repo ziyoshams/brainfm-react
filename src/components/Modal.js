@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setModalVisibility, updateSelectedCard } from "../redux/actions";
-
 import "../styles/Modal.css";
 
 class Modal extends PureComponent {
@@ -100,6 +100,17 @@ class Modal extends PureComponent {
     );
   }
 }
+
+Modal.propTypes = {
+  setModalVisibility: PropTypes.func.isRequired,
+  updateSelectedCard: PropTypes.func.isRequired,
+  modalIsVisible: PropTypes.bool.isRequired,
+  selectedCard: PropTypes.shape({
+    board: PropTypes.string,
+    text: PropTypes.string,
+    title: PropTypes.string
+  })
+};
 
 const mapStateToProps = state => ({
   selectedCard: state.CardReducer.selectedCard,

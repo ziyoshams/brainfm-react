@@ -36,12 +36,14 @@ function Card(props) {
 }
 
 Card.propTypes = {
+  board: PropTypes.string.isRequired,
   card: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     title: PropTypes.string,
     text: PropTypes.string
   }),
-  setSelectedCard: PropTypes.func.isRequired
+  setSelectedCard: PropTypes.func.isRequired,
+  setModalVisibility: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({

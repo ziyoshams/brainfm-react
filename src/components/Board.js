@@ -1,6 +1,8 @@
 import React from "react";
-import "../styles/Board.css";
+import PropTypes from "prop-types";
+
 import Card from "./Card";
+import "../styles/Board.css";
 
 export default function Board({ cards, name }) {
   return (
@@ -19,3 +21,14 @@ export default function Board({ cards, name }) {
     </div>
   );
 }
+
+Board.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      title: PropTypes.string,
+      text: PropTypes.string
+    })
+  ),
+  name: PropTypes.string.isRequired
+};

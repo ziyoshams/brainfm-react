@@ -20,7 +20,7 @@ export const setSelectedCard = value => {
  */
 export const updateSelectedCard = value => async dispatch => {
   try {
-    await fetch(`http://localhost:3003/boards/cards/${value.id}`, {
+    await fetch(`https://brainfm.herokuapp.com/boards/cards/${value.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(value)

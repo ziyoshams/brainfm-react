@@ -29,7 +29,7 @@ export const updateSingleCard = value => {
  */
 export const loadData = () => async dispatch => {
   try {
-    const data = await (await fetch("http://localhost:3003/boards")).json();
+    const data = await (await fetch("https://brainfm.herokuapp.com/boards")).json();
     dispatch(fetchBoards(data));
   } catch (error) {
     console.log("loadData", error);

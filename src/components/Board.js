@@ -3,7 +3,6 @@ import "../styles/Board.css";
 import Card from "./Card";
 
 export default function Board({ cards, name }) {
-  console.log(cards);
   return (
     <div className='board'>
       <div className='board__header'>
@@ -11,7 +10,7 @@ export default function Board({ cards, name }) {
       </div>
       <div className='board__body' style={{ height: window.innerHeight }}>
         {cards.map((card, index) => (
-          <Card key={index} {...card} />
+          <Card key={index} card={card} />
         ))}
       </div>
       <div className='board__footer'>

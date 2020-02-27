@@ -1,14 +1,14 @@
 .board{
     display: flex;
     flex-direction: column;
-    background-color: rgb(177, 177, 177);
+    background-color: #dcdde1;
     max-width: 360px;
+    min-width: 276px;
     margin: 12px;
 }
 
 .board__header{
     height: 50px;
-    background-color: cadetblue;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -21,7 +21,7 @@
 }
 
 .board__body{
-    padding: 15px 0px;
+    padding: 0px 0px 15px 0px;
     overflow-y: scroll;
 }
 

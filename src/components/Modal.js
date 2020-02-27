@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { setModalVisibility } from "../redux/actions";
+import { setModalVisibility, updateSelectedCard } from "../redux/actions";
 
 import "../styles/Modal.css";
 
-function Modal({ onSubmit, selectedCard, modalIsVisible, setModalVisibility }) {
+function Modal({ selectedCard, modalIsVisible, setModalVisibility, updateSelectedCard }) {
   const visible = modalIsVisible ? "modal modal-visible" : "modal";
   const [formTitle, setTitle] = useState("");
   const [formText, setText] = useState("");
+  const closeModal = () => setModalVisibility(false);
 
   return (
     <div className={visible}>
-      <a className='modal__close-button' onClick={() => setModalVisibility(false)}>
+      <a className='modal__close-button' onClick={closeModal}>
         x
       </a>
-      <div style={{ margin: "auto", backgroundColor: "#FFFFFF", padding: 20, borderRadius: 12 }}>
-        <form onSubmit={onSubmit}>
+      <div
+        style={{
+          margin: "auto",
+          backgroundColor: "#FFFFFF",
+          padding: 20,
+          borderRadius: 12,
+          width: 500
+        }}
+      >
+        <form>
           <div className='form__section'>
             <label htmlFor='title'>Title:</label>
             <input
@@ -36,6 +45,18 @@ function Modal({ onSubmit, selectedCard, modalIsVisible, setModalVisibility }) {
               value={formText || selectedCard.text}
             ></textarea>
           </div>
+
+          <div className='form__section'>
+            <button
+              onClick={event => {
+                event.preventDefault();
+                updateSelectedCard({ ...selectedCard, title: formTitle, text: formText });
+              }}
+            >
+              Done
+            </button>
+            <button onClick={closeModal}>Cancel</button>
+          </div>
         </form>
       </div>
     </div>
@@ -50,6 +71,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setModalVisibility: value => {
     dispatch(setModalVisibility(value));
+  },
+  updateSelectedCard: value => {
+    dispatch(updateSelectedCard(value));
   }
 });
 

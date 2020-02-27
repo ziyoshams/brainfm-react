@@ -11,13 +11,7 @@ class App extends Component {
   componentDidMount() {
     const { loadData } = this.props;
     loadData();
-    this.props.setModalVisibility(true);
   }
-
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log(event.target);
-  };
 
   render() {
     const { boards } = this.props;
@@ -27,7 +21,7 @@ class App extends Component {
         {Object.keys(boards).map((boardName, index) => (
           <Board key={index} name={boardName} cards={boards[boardName]} />
         ))}
-        <Modal onSubmit={this.handleSubmit} />
+        <Modal />
       </div>
     );
   }

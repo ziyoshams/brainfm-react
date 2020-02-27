@@ -2,6 +2,7 @@ import { SET_SELECTED_CARD } from "../actions/CardActions";
 
 const initialState = {
   selectedCard: {
+    board: undefined,
     title: "",
     text: ""
   }

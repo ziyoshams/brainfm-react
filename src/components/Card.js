@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { setSelectedCard, setModalVisibility } from "../redux/actions";
+import { setSelectedCard } from "../redux/actions/CardActions";
+import { setModalVisibility } from "../redux/actions/ModalActions";
 import "../styles/Card.css";
 
 function Card(props) {
-  const { card, setSelectedCard, setModalVisibility } = props;
+  const { card, setSelectedCard, setModalVisibility, board } = props;
   const { title, text } = card;
   const arrOfWords = text.split(" ");
   const excerpt = arrOfWords.length >= 10 ? `${arrOfWords.splice(0, 10).join(" ")} ...` : text;
@@ -13,7 +14,7 @@ function Card(props) {
   return (
     <a
       onClick={() => {
-        setSelectedCard(card);
+        setSelectedCard({ board, ...card });
         setModalVisibility(true);
       }}
       href='#'

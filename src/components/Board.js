@@ -10,7 +10,7 @@ export default function Board({ cards, name }) {
       </div>
       <div className='board__body' style={{ height: window.innerHeight }}>
         {cards.map((card, index) => (
-          <Card key={index} card={card} />
+          <Card key={index} card={card} board={name} />
         ))}
       </div>
       <div className='board__footer'>

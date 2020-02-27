@@ -1,4 +1,4 @@
-import { LOAD_BOARDS } from "../actions/BoardActions";
+import { LOAD_BOARDS, UPDATE_CARD } from "../actions/BoardActions";
 
 const initialState = {
   boards: []
@@ -11,6 +11,22 @@ export function BoardReducer(state = initialState, action) {
         ...state,
         boards: action.value
       };
+    case UPDATE_CARD: {
+      const singleBoard = state.boards[action.value.board].map(card => {
+        if (card.id === action.value.id) {
+          return action.value;
+        }
+        return card;
+      });
+
+      return {
+        ...state,
+        boards: {
+          ...state.boards,
+          [action.value.board]: singleBoard
+        }
+      };
+    }
 
     default:
       return state;
